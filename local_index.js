@@ -60,6 +60,9 @@ app.post('/webhook', (req, res) => {
               call_id: callID,
               phone_number: phoneNumber,
               metadata: {
+                customer_id: '123453829',
+                call_id: callID,
+                phone_number: phoneNumber,
                 cost: cost,
                 duration_minutes: duration.minutes,
                 duration_seconds: duration.seconds,
