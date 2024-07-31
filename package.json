@@ -6,11 +6,12 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "dotenv": "^16.4.5",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "nodejs-express-webhook-example": "file:"
   },
   "scripts": {
-    "dev": "node index.js",
-    "start": "node index.js"
+    "dev": "node local_index.js",
+    "start": "node local_index.js"
   },
   "repository": {
     "type": "git",

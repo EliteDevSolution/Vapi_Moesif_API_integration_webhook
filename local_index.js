@@ -112,5 +112,5 @@ function getDuration(startTime = '', endTime = '')
     return {minutes, seconds}
 }
 
-export default app;
-//app.listen(3000, () => console.log('VAPI Webhook is listening'));
+
+app.listen(3000, () => console.log('VAPI Webhook is listening'));
