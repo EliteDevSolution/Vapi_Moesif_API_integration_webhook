@@ -44,23 +44,17 @@ app.post('/webhook', (req, res) => {
             const duration = getDuration(startTime, endTime);
             const cost =  resObj.cost.toFixed(2);
             const phoneNumber = req.body.customer?.number || '';
-            console.log('phoneNumber:', phoneNumber);
-            console.log('CallID:', callID);
-            console.log('Cost:', cost);
-            console.log('Duration:', duration);
 
             const data = {
               action_name: 'VAPI CALL Ended',
+              company_id: "cus_QX8yUwzGuAu12a",
               request: {
                 time: new Date().toISOString()
 
               },
-              customer_id: phoneNumber,
-              call_id: callID,
-              phone_number: phoneNumber,
               metadata: {
                 assistant_id: assistantId,
-                customer_id: phoneNumber,
+                customer_id: '123453829',
                 call_id: callID,
                 phone_number: phoneNumber,
                 cost: cost,
@@ -81,15 +75,15 @@ app.post('/webhook', (req, res) => {
             })
             .then(response => {
               if (response.ok) {
-                console.log('Moesif API Request successful');
                 return res.json({
                   status: true,
               });
+                console.log('Moesif API Request successful');
               } else {
-                console.error('Moesif API Request failed:', response.status);
                 return res.json({
                   status: false,
               });
+                console.error('Moesif API Request failed:', response.status);
               }
             })
             .catch(error => {
@@ -118,5 +112,5 @@ function getDuration(startTime = '', endTime = '')
     return {minutes, seconds}
 }
 
-export default app;
-//app.listen(3000, () => console.log('VAPI Webhook is listening'));
+
+app.listen(3000, () => console.log('VAPI Webhook is listening'));
