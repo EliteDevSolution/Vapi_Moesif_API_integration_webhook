@@ -78,8 +78,14 @@ app.post('/webhook', (req, res) => {
             })
             .then(response => {
               if (response.ok) {
+                return res.json({
+                  status: true,
+              });
                 console.log('Moesif API Request successful');
               } else {
+                return res.json({
+                  status: false,
+              });
                 console.error('Moesif API Request failed:', response.status);
               }
             })
@@ -89,9 +95,6 @@ app.post('/webhook', (req, res) => {
         })
         .catch(error => console.error('VAPI API Calling Error: ', error));
     }
-    return res.json({
-        status: true,
-    });
 });
 
 function getDuration(startTime = '', endTime = '')
