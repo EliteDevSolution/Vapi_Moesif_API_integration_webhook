@@ -78,9 +78,9 @@ app.post('/webhook', (req, res) => {
             })
             .then(response => {
               if (response.ok) {
-                console.log('Request successful');
+                console.log('Moesif API Request successful');
               } else {
-                console.error('Request failed:', response.status);
+                console.error('Moesif API Request failed:', response.status);
               }
             })
             .catch(error => {
