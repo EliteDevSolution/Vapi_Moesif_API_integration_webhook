@@ -1,1 +1,13 @@
-# Vapi_Moesif_API_integration_webhook
+# Vapi webhook and Moesif API integration
+
+## Install dependencies
+
+```
+npm install
+```
+
+## Run
+
+```
+npm start
+```
