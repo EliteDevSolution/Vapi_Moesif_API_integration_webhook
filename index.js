@@ -28,7 +28,6 @@ app.post('/webhook', (req, res) => {
     {
         var callID = req.body.message.call.id || '';
         //callID = "fa61c90a-4455-4671-8902-3393c89419b3";
-        const phoneNumber = req.body.message?.phoneNumber?.number || '';
 
         fetch(`https://api.vapi.ai/call/${callID}`, {
             method: 'get',
@@ -39,12 +38,12 @@ app.post('/webhook', (req, res) => {
         })
         .then(res => res.json())
         .then(resObj => {
-            //const assistantId = resObj.assistantId;
+            const assistantId = resObj?.assistantId;
             const startTime = resObj.startedAt;
             const endTime = resObj.endedAt;
             const duration = getDuration(startTime, endTime);
             const cost =  resObj.cost.toFixed(2);
-
+            const phoneNumber = req.body.customer?.number || '';
             console.log('phoneNumber:', phoneNumber);
             console.log('CallID:', callID);
             console.log('Cost:', cost);
@@ -56,11 +55,12 @@ app.post('/webhook', (req, res) => {
                 time: new Date().toISOString()
 
               },
-              customer_id: '123453829',
+              customer_id: phoneNumber,
               call_id: callID,
               phone_number: phoneNumber,
               metadata: {
-                customer_id: '123453829',
+                assistant_id: assistantId,
+                customer_id: phoneNumber,
                 call_id: callID,
                 phone_number: phoneNumber,
                 cost: cost,
