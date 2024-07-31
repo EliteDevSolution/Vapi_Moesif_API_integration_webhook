@@ -56,7 +56,7 @@ app.post('/webhook', (req, res) => {
                 time: new Date().toISOString()
 
               },
-              customer_id: '12345',
+              customer_id: '123453829',
               call_id: callID,
               phone_number: phoneNumber,
               metadata: {
@@ -79,8 +79,14 @@ app.post('/webhook', (req, res) => {
             .then(response => {
               if (response.ok) {
                 console.log('Moesif API Request successful');
+                return res.json({
+                  status: true,
+              });
               } else {
                 console.error('Moesif API Request failed:', response.status);
+                return res.json({
+                  status: false,
+              });
               }
             })
             .catch(error => {
@@ -89,9 +95,6 @@ app.post('/webhook', (req, res) => {
         })
         .catch(error => console.error('VAPI API Calling Error: ', error));
     }
-    return res.json({
-        status: true,
-    });
 });
 
 function getDuration(startTime = '', endTime = '')
