@@ -115,6 +115,11 @@ function getDuration(startTime = '', endTime = '')
     // Calculate minutes and seconds
     const minutes = Math.floor(durationSeconds / 60);
     const seconds = Math.round(durationSeconds % 60);
+    if(minutes === 0  && seconds > 0)
+    {
+      minutes = 1;
+      seconds = 0;
+    }
 
     return {minutes, seconds}
 }
